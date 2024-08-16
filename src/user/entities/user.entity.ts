@@ -1,14 +1,9 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { FinancialHistory } from "src/financial-history/entities/financial-history.entity";
+import { Microcredit } from "src/microcredit/entities/microcredit.entity";
+import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
-type FinancialHistory = {
-    date: Date,
-    transactionAmount: number,
-    balance: number,
-    type: string,
-    description: string,
-}
 
-@Entity()
+@Entity('users')
 export class User {
     @PrimaryGeneratedColumn()
     id: string;
@@ -19,6 +14,10 @@ export class User {
     @Column()
     creditScore: number
 
-    @Column()
-    financialHistory: FinancialHistory
+    @OneToMany(() => Microcredit, (microcredit) => microcredit.user)
+    microcredits: Microcredit[];
+
+    @OneToOne(() => FinancialHistory, (financialHistory) => financialHistory.user)
+    financialHistory: FinancialHistory;
+
 }

@@ -1,6 +1,6 @@
 import { FinancialHistory } from "src/financial-history/entities/financial-history.entity";
 import { Microcredit } from "src/microcredit/entities/microcredit.entity";
-import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 
 @Entity('users')
@@ -17,7 +17,7 @@ export class User {
     @OneToMany(() => Microcredit, (microcredit) => microcredit.user)
     microcredits: Microcredit[];
 
-    @OneToOne(() => FinancialHistory, (financialHistory) => financialHistory.user)
+    @OneToMany(() => FinancialHistory, (financialHistory) => financialHistory.user)
     financialHistory: FinancialHistory;
 
 }

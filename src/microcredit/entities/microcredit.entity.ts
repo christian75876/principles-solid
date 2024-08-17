@@ -6,8 +6,8 @@ export class Microcredit {
     @PrimaryGeneratedColumn()
     id: string;
 
-    @ManyToOne(() => User, (user) => user.microcredits)
-    user: User;
+    // @ManyToOne(() => User, (user) => user.microcredits)
+    // user: User;
 
     @Column()
     amount: number;

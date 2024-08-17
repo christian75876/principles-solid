@@ -1,27 +1,20 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import dotenv from "dotenv";
-import { FinancialHistory } from './financial-history/entities/financial-history.entity';
-import { Microcredit } from './microcredit/entities/microcredit.entity';
-import { User } from './user/entities/user.entity';
 import { UserModule } from './user/user.module';
-
-
-dotenv.config();
+import { DatabaseconfigService } from './common/config/connection-db.config';
+import { DatabaseModule } from './modules/database.module';
+import { MicrocreditModule } from './microcredit/microcredit.module';
+import { FinancialHistoryModule } from './financial-history/financial-history.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot({
-    type: 'mysql',
-
-    host: process.env.HOST,
-    port: parseInt(process.env.PORT),
-    username: process.env.USERNAME,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE,
-    entities: [User, Microcredit, FinancialHistory],
-    synchronize: true,
-  }),
-    UserModule
+  imports: [
+    TypeOrmModule.forRootAsync({
+      useClass: DatabaseconfigService,
+    }),
+    DatabaseModule,
+    UserModule,
+    MicrocreditModule,
+    FinancialHistoryModule
   ],
 })
-export class AppModule { }
+export class AppModule {}

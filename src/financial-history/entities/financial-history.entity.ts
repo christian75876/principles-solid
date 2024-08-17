@@ -21,7 +21,7 @@ export class FinancialHistory {
     @Column()
     description: string;
 
-    @OneToOne(() => User, (user) => user.financialHistory)
-    user: User;
+    // @OneToOne(() => User, (user) => user.financialHistory)
+    // user: User;
 
 }

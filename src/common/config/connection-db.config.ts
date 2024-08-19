@@ -1,10 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
 import { EnvConfig } from './env.config';
-import { User } from 'src/user/entities/user.entity';
-import { Microcredit } from 'src/microcredit/entities/microcredit.entity';
-import { FinancialHistory } from 'src/financial-history/entities/financial-history.entity';
-
 @Injectable()
 export class DatabaseconfigService implements TypeOrmOptionsFactory {
   createTypeOrmOptions(): TypeOrmModuleOptions {

@@ -14,10 +14,10 @@ export class User {
     @Column()
     creditScore: number
 
-    // @OneToMany(() => Microcredit, (microcredit) => microcredit.user)
-    // microcredits: Microcredit[];
+    @OneToMany(() => Microcredit, (microcredit) => microcredit.user)
+    microcredits: Microcredit[];
 
-    // @OneToMany(() => FinancialHistory, (financialHistory) => financialHistory.user)
-    // financialHistory: FinancialHistory;
+    @OneToMany(() => FinancialHistory, (financialHistory) => financialHistory.user)
+    financialHistory: FinancialHistory[];
 
 }

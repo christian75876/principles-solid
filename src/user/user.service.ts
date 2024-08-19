@@ -27,6 +27,10 @@ export class GetUsers{
     console.log(users)
     return users
   }
+  async getUser(id: string): Promise<User>{
+    const user = await this.userRepository.findOne({where:{id}});
+    return user;
+  }  
 }
 
 
@@ -44,6 +48,10 @@ export class UserService {
   async getAll(): Promise<User[]> {
     return await this.getUsers.getAllUsers();
   }
+
+  async getById(id: string): Promise<User> {
+    return await this.getUsers.getUser(id);
+  };
 }
 
 /*

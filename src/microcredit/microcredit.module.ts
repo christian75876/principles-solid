@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { MicrocreditService } from './microcredit.service';
 import { MicrocreditController } from './microcredit.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from 'src/user/entities/user.entity';
 import { Microcredit } from './entities/microcredit.entity';
 
 @Module({
